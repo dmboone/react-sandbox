@@ -1,7 +1,15 @@
 // a component in React is just a special kind of javascript function
 
-function ExpenseItem(){
-    return <h2>Expense item!</h2>
+function ExpenseItem() {
+  return (
+    <div>
+      <div>March 28th 2021</div>
+      <div>
+        <h2>Car Insurance</h2>
+        <div>$294.67</div>
+      </div>
+    </div>
+  );
 }
 
 export default ExpenseItem; // must always export your component!
