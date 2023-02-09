@@ -1,6 +1,6 @@
 import Expenses from './components/./Expenses/Expenses';
 
-function App() {
+const App = () => { // can also use arrow function like this instead of function App(){}
   
   return (
     <div>
