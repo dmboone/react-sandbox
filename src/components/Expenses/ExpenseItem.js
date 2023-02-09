@@ -1,6 +1,6 @@
 import ExpenseDate from './ExpenseDate';
 import './ExpenseItem.css';
-import Card from './Card';
+import Card from '../UI/Card';
 
 // a component in React is just a special kind of javascript function
 function ExpenseItem(props) {
