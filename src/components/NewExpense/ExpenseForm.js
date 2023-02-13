@@ -3,63 +3,75 @@ import { useState } from 'react';
 
 const ExpenseForm = () => {
     // one solution for tracking state - separate slices
-    // const [enteredTitle, setEnteredTitle] = useState('');
-    // const [enteredAmount, setEnteredAmount] = useState('');
-    // const [enteredDate, setEnteredDate] = useState('');
+    const [enteredTitle, setEnteredTitle] = useState('');
+    const [enteredAmount, setEnteredAmount] = useState('');
+    const [enteredDate, setEnteredDate] = useState('');
 
-    // const titleChangeHandler = (event) => { // event is a default value we grab
-    //     setEnteredTitle(event.target.value);
-    // };
-
-    // const amountChangeHandler = (event) => {
-    //     setEnteredAmount(event.target.value);
-    // };
-
-    // const dateChangeHandler = (event) => {
-    //     setEnteredDate(event.target.value);
-    // };
-
-    // another solution for tracking state - one object with all slices combined
-    const [userInput, setUserInput] = useState({
-        enteredTitle: '',
-        enteredAmount: '',
-        enteredDate: ''
-    });
-
-    const titleChangeHandler = (event) => {
-        // setUserInput({ // but DON'T do it like this!
-        //     ...userInput,
-        //     enteredTitle: event.target.value
-        // });
-        
-        setUserInput((prevState) => { // do it like THIS! grabbing prev state will ensure you are grabbing most up to date state;
-            return {                    // important to do it this way if you choose to update state based on previous state
-                ...prevState,   
-                enteredTitle: event.target.value
-            };
-        });
+    const titleChangeHandler = (event) => { // event is a default value we grab
+        setEnteredTitle(event.target.value);
     };
 
     const amountChangeHandler = (event) => {
-        setUserInput((prevState) => {
-            return {
-                ...prevState,
-                enteredAmout: event.target.value
-            }
-        });
+        setEnteredAmount(event.target.value);
     };
 
     const dateChangeHandler = (event) => {
-        setUserInput((prevState) => {
-            return {
-                ...prevState,
-                enteredDate: event.target.value
-            }
-        });
+        setEnteredDate(event.target.value);
     };
 
+    const submitHandler = (e) => {
+        e.preventDefault(); // keeps page from reloading
+
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate)
+        };
+
+        console.log(expenseData);
+    }
+
+    // another solution for tracking state - one object with all slices combined
+    // const [userInput, setUserInput] = useState({
+    //     enteredTitle: '',
+    //     enteredAmount: '',
+    //     enteredDate: ''
+    // });
+
+    // const titleChangeHandler = (event) => {
+    //     // setUserInput({ // but DON'T do it like this!
+    //     //     ...userInput,
+    //     //     enteredTitle: event.target.value
+    //     // });
+        
+    //     setUserInput((prevState) => { // do it like THIS! grabbing prev state will ensure you are grabbing most up to date state;
+    //         return {                    // important to do it this way if you choose to update state based on previous state
+    //             ...prevState,   
+    //             enteredTitle: event.target.value
+    //         };
+    //     });
+    // };
+
+    // const amountChangeHandler = (event) => {
+    //     setUserInput((prevState) => {
+    //         return {
+    //             ...prevState,
+    //             enteredAmout: event.target.value
+    //         }
+    //     });
+    // };
+
+    // const dateChangeHandler = (event) => {
+    //     setUserInput((prevState) => {
+    //         return {
+    //             ...prevState,
+    //             enteredDate: event.target.value
+    //         }
+    //     });
+    // };
+
     return (
-        <form>
+        <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>
