@@ -15,7 +15,20 @@ function Expenses(props){
         <div>
           <Card className='expenses'>
               <ExpensesFilter selectedYear={filteredYear} onChangeFilter={filterChangeHandler}/>
-              <ExpenseItem 
+
+              {/* dynamically adding our expense item elements based on the amount of data in our array */}
+              {/* we use the map operator for this, which allows us to perform some action on each piece of data in our array */}
+              {props.items.map(expense => (
+                <ExpenseItem
+                title = {expense.title}
+                amount = {expense.amount}
+                date = {expense.date}
+                >
+                </ExpenseItem>
+              ))}
+
+              {/* this code below was the old static way which couldn't update on it's own if we added something to the items array */}
+              {/* <ExpenseItem 
               title={props.items[0].title}
               amount={props.items[0].amount}
               date={props.items[0].date}
@@ -38,7 +51,7 @@ function Expenses(props){
               amount={props.items[3].amount}
               date={props.items[3].date}
               >
-              </ExpenseItem>
+              </ExpenseItem> */}
           </Card>
         </div>
       );
