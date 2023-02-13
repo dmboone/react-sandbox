@@ -18,8 +18,10 @@ function Expenses(props){
 
               {/* dynamically adding our expense item elements based on the amount of data in our array */}
               {/* we use the map operator for this, which allows us to perform some action on each piece of data in our array */}
+              {/* always include a key prop that holds a unique identifier when mapping out lists of items so that React can differentiate items in the array */}
               {props.items.map(expense => (
                 <ExpenseItem
+                key = {expense.id}
                 title = {expense.title}
                 amount = {expense.amount}
                 date = {expense.date}
