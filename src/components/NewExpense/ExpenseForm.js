@@ -1,7 +1,7 @@
 import './ExpenseForm.css';
 import { useState } from 'react';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     // one solution for tracking state - separate slices
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
@@ -28,11 +28,10 @@ const ExpenseForm = () => {
             date: new Date(enteredDate)
         };
 
+        props.onSaveExpenseData(expenseData);
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
-
-        console.log(expenseData);
     }
 
     // another solution for tracking state - one object with all slices combined
